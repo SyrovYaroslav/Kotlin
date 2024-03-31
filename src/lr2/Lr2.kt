@@ -83,8 +83,8 @@ fun findMiddle(str: String): String {
 }
 
 fun multiplicationTable(n: Int): List<List<Int>> {
-    return List(n) { i ->
-        List(n) { j -> (i + 1) * (j + 1) }
+    return List(if (n < 1) -n else n) { i ->
+        List(if (n < 1) -n else n) { j -> (i + 1) * (j + 1) }
     }
 }
 
