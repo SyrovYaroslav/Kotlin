@@ -1,17 +1,18 @@
 package lr2
 
+import kotlin.random.Random
 
 fun main() {
-    println(getEvenOrOdd(5))
-    println(multiplyByFourOrFive(6))
-    println(getNegative(-5))
-    println(calculateAge(2024))
-    println(findMin(listOf(34, 15, 88, 2)))
-    println(findTwoLargest(listOf(1, 5, 87, 45, 8, 8)))
-    println(countPositivesAndSumNegatives(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15)))
+    println(getEvenOrOdd(generateRandomNumber()))
+    println(multiplyByFourOrFive(generateRandomNumber()))
+    println(getNegative(generateRandomNumber()))
+    println(calculateAge(generateRandomNumber()))
+    println(findMin(generateRandomList(generateRandomNumber())))
+    println(findTwoLargest(generateRandomList(generateRandomNumber())))
+    println(countPositivesAndSumNegatives(generateRandomList(generateRandomNumber())))
     println(countVowels("Hello World"))
     println(findMiddle("studdent"))
-    println(multiplicationTable(3))
+    printMatrix(multiplicationTable(generateRandomNumber()))
 }
 
 fun getEvenOrOdd(num: Int): String {
@@ -84,5 +85,22 @@ fun findMiddle(str: String): String {
 fun multiplicationTable(n: Int): List<List<Int>> {
     return List(n) { i ->
         List(n) { j -> (i + 1) * (j + 1) }
+    }
+}
+
+fun generateRandomNumber(): Int {
+    return Random.nextInt(-100, 101)
+}
+
+fun generateRandomList(size: Int): List<Int> {
+    return List(if (size < 1) -size else size) { Random.nextInt(-100, 101) }
+}
+
+fun printMatrix(matrix: List<List<Int>>) {
+    for (row in matrix) {
+        for (cell in row) {
+            print("$cell\t")
+        }
+        println()
     }
 }
